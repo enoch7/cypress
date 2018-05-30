@@ -1,4 +1,5 @@
 <?php
+namespace common;
 /**
 * 
 */
@@ -29,6 +30,7 @@ class RedisTool
 		if (0 === $waitSeconds) {
 			return $this->redis->rpop($key);
 		} elseif ($waitSeconds > 0) {
+			//集群模式测试
 			return $this->redis->brpop([$key],$waitSeconds);
 		}
 	}
